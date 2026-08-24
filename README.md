@@ -26,6 +26,14 @@ LINEミニアプリ（LIFF）をゼロから作るハンズオン用の雛形で
 4. [docs/03_vercel_deploy.md](docs/03_vercel_deploy.md) — Vercelへのデプロイ
 5. うまく動かないときは [docs/04_troubleshooting.md](docs/04_troubleshooting.md) を確認してください。
 
+### 次のステップ：自分のアプリを作る
+
+デプロイまで完了したら、ここから自分のミニアプリを作っていきます。Gemini（チャットAI）とVSCodeで開発する場合は、以下も参考にしてください。
+
+6. [docs/05_working_with_gemini.md](docs/05_working_with_gemini.md) — Geminiとの付き合い方（プロンプトのコツ・よくある失敗パターン）
+7. [docs/06_liff_advanced_features.md](docs/06_liff_advanced_features.md) — LIFF発展機能ガイド（shareTargetPicker、scanCodeV2など）
+8. [docs/07_app_ideas.md](docs/07_app_ideas.md) — 難易度別アプリ案リスト
+
 ## ディレクトリ構成
 
 ```
