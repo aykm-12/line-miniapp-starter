@@ -19,8 +19,8 @@
 ## 3-3. デプロイURLをLIFFに反映
 
 1. デプロイ完了後に発行されるURL（`https://xxxx.vercel.app` など）をコピー
-2. LINE Developers Console → 作成したLIFFアプリの設定画面に戻り、「エンドポイントURL」をこのURLに更新
-3. LINEアプリでこのLIFF URL（`https://liff.line.me/{LIFF ID}`）を開き、動作確認
+2. LINE Developers Console → 作成したLIFFアプリの設定画面に戻り、「エンドポイントURL」（本番用）をこのURLに更新
+3. LINEアプリでこのLIFF URL（`https://miniapp.line.me/{LIFF ID}`）を開き、動作確認
 
 ## 3-4. コードを更新したら
 
