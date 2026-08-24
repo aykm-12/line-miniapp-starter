@@ -20,7 +20,7 @@ LINEミニアプリ（LIFF）をゼロから作るハンズオン用の雛形で
    ```bash
    npm install
    cp .env.example .env
-   # .env に LIFF ID / Supabase の URL・anon key を設定
+   # .env に LIFF ID / Supabase の URL・publishable key を設定
    npm run dev
    ```
 4. [docs/03_vercel_deploy.md](docs/03_vercel_deploy.md) — Vercelへのデプロイ
