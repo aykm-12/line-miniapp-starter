@@ -12,7 +12,7 @@
 4. 「Environment Variables」に以下の3つを追加
    - `VITE_LIFF_ID`
    - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY`
    （それぞれ `.env` に設定した値と同じものを入力）
 5. 「Deploy」をクリック
 

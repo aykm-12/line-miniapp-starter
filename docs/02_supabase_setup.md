@@ -1,10 +1,17 @@
 # 2. Supabaseの設定
 
-## 2-1. プロジェクトの作成
+## 2-1. Organizationとプロジェクトの作成
 
-1. [Supabase](https://supabase.com/) にサインアップ/ログイン
-2. 「New project」からプロジェクトを作成（リージョンは Tokyo (ap-northeast-1) を選ぶとレイテンシが低くおすすめ）
-3. データベースパスワードは後で使わないので、忘れても問題ありません（メモ推奨ではあります）
+Supabaseでは、プロジェクトを作成する前に**Organization**（組織）の作成が必要です。Organizationは課金・プランの単位で、この配下に複数のプロジェクトを作成する構成になっています。
+
+1. [Supabase](https://supabase.com/) にサインアップ/ログイン（githubアカウントでログインできます）
+2. 初回は「New organization」の作成を促されます。Organization名を入力し、プランは **Free** を選択（個人開発や検証用途であればFreeで十分です。Freeプランでは1つのOrganizationにつきプロジェクトを2つまで作成できます）
+3. 作成したOrganization内で「New project」からプロジェクトを作成（リージョンは Tokyo (ap-northeast-1) を選ぶとレイテンシが低くおすすめ）
+4. データベースパスワードは後で使わないので、忘れても問題ありません（メモ推奨ではあります）
+5. 「Security」欄のチェックボックスは全てチェックにしてください（このスターター向けの意味は以下の通り）
+   - **Enable Data API**: ON（必須。supabase-jsが anon key でREST経由アクセスするために必要）
+   - **Automatically expose new tables**: ON（OFFにすると新規テーブルにanon/authenticatedロールへの権限が自動付与されず、`schema.sql`のRLSポリシーを設定してもテーブル自体にアクセスできません。手動でGRANT文を管理する場合はOFFでも構いません）
+   - **Enable automatic RLS**: ON（`schema.sql`側でも明示的にRLSを有効化していますが、今後追加するテーブルでRLSの有効化を忘れないための保険になります）
 
 ## 2-2. テーブルとRLSポリシーの作成
 
@@ -17,14 +24,18 @@
 
 ## 2-3. APIキーの取得
 
-1. 左メニューの「Project Settings」→「API」を開く
-2. 以下の2つをメモする
+Project URLとキーは、プロジェクト画面上部の **「Connect」** ボタンからまとめて取得するのが簡単です。
+
+1. プロジェクト画面上部の「Connect」を開き、「Framework」（Use a client library）タブで **Vue** を選択
+2. 表示されるコードスニペットから以下の2つをメモする
    - **Project URL** → `.env` の `VITE_SUPABASE_URL`
-   - **anon public key** → `.env` の `VITE_SUPABASE_ANON_KEY`
+   - **anon / publishable key** → `.env` の `VITE_SUPABASE_PUBLISHABLE_KEY`
+
+> 「Project Settings」→「API Keys」から直接確認することもできます。その場合は **「Publishable and secret API keys」**（新方式）タブを使ってください。**「Legacy anon, service_role API keys」**（旧方式、`anon`/`service_role`。2026年末に廃止予定）は使わないでください。この画面ではProject URLが表示されない場合があるので、その際は「Project Settings」→「General settings」の **Project ID** から `https://{Project ID}.supabase.co` の形式で組み立ててください。
 
 ```
 VITE_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJI...
+VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 ```
 
-> **注意**: `service_role key` は絶対にフロントエンド（`.env` の `VITE_` 変数）に入れないでください。この鍵はRLSを無視して全データにアクセスできる強力な鍵で、クライアントに公開すると誰でもデータベースを操作できてしまいます。`anon key` だけを使ってください。
+> **注意**: 同じ画面にある **Secret key**（旧方式の `service_role key` に相当）は絶対にフロントエンド（`.env` の `VITE_` 変数）に入れないでください。この鍵はRLSを無視して全データにアクセスできる強力な鍵で、クライアントに公開すると誰でもデータベースを操作できてしまいます。**Publishable key** だけを使ってください。

@@ -67,7 +67,7 @@ onMounted(async () => {
       </div>
 
       <div v-if="!isSupabaseConfigured()" class="rounded-lg bg-red-50 p-4 text-sm text-red-700">
-        Supabaseの環境変数（VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY）が未設定です。
+        Supabaseの環境変数（VITE_SUPABASE_URL / VITE_SUPABASE_PUBLISHABLE_KEY）が未設定です。
       </div>
       <SampleList v-else :user-id="userId" />
     </div>
