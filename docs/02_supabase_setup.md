@@ -51,3 +51,17 @@ Freeプランのプロジェクトは、**過去7日間データベースへの�
 1. [Supabase](https://supabase.com/dashboard) にログインし、対象のOrganization・プロジェクトを選択
 2. 一時停止中のプロジェクト画面で「Resume project」をクリック
 3. 数分待つとプロジェクトが復旧し、データ・設定も元の状態に戻ります
+
+## 2-5. 次のステップ：ここまでの設定をGitHubにプッシュ
+
+ローカルで `.env` に環境変数を設定しました。次は [docs/03_vercel_deploy.md](03_vercel_deploy.md) でVercelにデプロイします。
+
+その前に、ここまでのコードをGitHubにプッシュしてください。
+
+```bash
+git add .
+git commit -m "Add Supabase environment variables"
+git push origin main
+```
+
+> **注意**: `.env` ファイルは `.gitignore` に含まれているため、GitHubにプッシュされません。これは意図した動作です（機密情報を誤って公開しないため）。Vercelへのデプロイ時は、Vercelのプロジェクト設定で `VITE_SUPABASE_URL` と `VITE_SUPABASE_PUBLISHABLE_KEY` を環境変数として登録します。
