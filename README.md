@@ -14,6 +14,12 @@ LINEミニアプリ（LIFF）をゼロから作るハンズオン用の雛形で
 
 はじめての場合は `docs/` 以下を順番に読み進めてください。
 
+0. リポジトリをクローン
+   ```bash
+   git clone https://github.com/aykm-12/line-miniapp-starter.git
+   cd line-miniapp-starter
+   ```
+
 1. [docs/01_line_developers_setup.md](docs/01_line_developers_setup.md) — LINE Developersの設定
 2. [docs/02_supabase_setup.md](docs/02_supabase_setup.md) — Supabaseプロジェクトの作成
 3. ローカルで動かす
