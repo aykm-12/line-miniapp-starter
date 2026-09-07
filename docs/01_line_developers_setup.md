@@ -43,7 +43,7 @@ cp .env.example .env
 ```
 ### Windowsの場合
 ```bash
-Copy .env.example .env
+Copy-Item .env.example .env
 ```
 ### 自身のIDを.envに記載
 ```
