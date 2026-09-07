@@ -25,16 +25,6 @@ LINEミニアプリ（LIFF）をゼロから作るハンズオン用の雛形で
 3. ローカルで動かす
    ```bash
    npm install
-   # .env ファイルを作成（Windowsの場合は copy .env.example .env）
-   cp .env.example .env
-   # .env に LIFF ID / Supabase の URL・publishable key を設定
-   npm run dev
-   ```
-   
-   **Windows環境の場合：**
-   ```powershell
-   npm install
-   Copy-Item .env.example .env
    # .env に LIFF ID / Supabase の URL・publishable key を設定
    npm run dev
    ```
