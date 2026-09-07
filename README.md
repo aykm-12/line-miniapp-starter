@@ -23,6 +23,25 @@ LINEミニアプリ（LIFF）をゼロから作るハンズオン用の雛形で
 1. [docs/01_line_developers_setup.md](docs/01_line_developers_setup.md) — LINE Developersの設定
 2. [docs/02_supabase_setup.md](docs/02_supabase_setup.md) — Supabaseプロジェクトの作成
 3. ローカルで動かす
+   
+   **Node.js（v18以上）をインストール**（未インストールの場合）
+   
+   事前に `node --version` で v18以上が表示されるか確認してください。表示されない場合は以下の手順でインストールしてください。
+   
+   **Mac の場合：**
+   ```bash
+   # Homebrewがない場合はインストール
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   
+   # Node.js をインストール
+   brew install node
+   ```
+   
+   **Windows の場合：**
+   - [Node.js公式サイト](https://nodejs.org/) から LTS版のインストーラーをダウンロードして実行してください
+   - 代わりに PowerShell で `winget install OpenJS.NodeJS.LTS` を実行することもできます
+   
+   **その後、以下を実行します：**
    ```bash
    npm install
    # .env に LIFF ID / Supabase の URL・publishable key を設定
