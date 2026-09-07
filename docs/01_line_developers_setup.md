@@ -45,6 +45,7 @@ cp .env.example .env
 ```bash
 Copy .env.example .env
 ```
+### 自身のIDを.envに記載
 ```
 VITE_LIFF_ID=1234567890-AbCdEfGh
 ```
