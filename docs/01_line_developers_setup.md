@@ -41,7 +41,10 @@
 ```bash
 cp .env.example .env
 ```
-
+### Windowsの場合
+```bash
+Copy .env.example .env
+```
 ```
 VITE_LIFF_ID=1234567890-AbCdEfGh
 ```
