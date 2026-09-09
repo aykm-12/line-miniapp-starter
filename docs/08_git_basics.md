@@ -157,38 +157,6 @@ password=your-personal-access-token
 
 不明な場合は [GitHub公式ドキュメント](https://docs.github.com/ja/authentication) を参照するか、教員に相談してください。
 
-## 1日の作業フロー例
-
-```bash
-# 朝：ファイルを編集して機能を追加
-# ...VSCode で src/components/MyComponent.vue を編集...
-
-# 編集内容を確認
-git status
-
-# 変更をステージに追加
-git add .
-
-# コミット
-git commit -m "ユーザー名表示機能を追加"
-
-# プッシュ（Vercel が自動デプロイ）
-git push
-
-# 昼：別の機能を追加
-# ...VSCode で src/App.vue を編集...
-
-git add .
-git commit -m "ホーム画面にナビゲーションを追加"
-git push
-
-# 夜：バグを修正
-# ...VSCode でバグを修正...
-
-git add .
-git commit -m "ボタンのクリック判定がおかしい問題を修正"
-git push
-```
 
 ## その他の便利なコマンド
 
@@ -234,4 +202,4 @@ git commit --amend --no-edit
 # 4. git push
 ```
 
-これだけで OK です。わからないことがあれば、教員に質問してください！
+これだけで OK です。わからないことがあれば、質問してください！
