@@ -58,6 +58,28 @@ LINEミニアプリ（LIFF）をゼロから作るハンズオン用の雛形で
 7. [docs/06_liff_advanced_features.md](docs/06_liff_advanced_features.md) — LIFF発展機能ガイド（shareTargetPicker、scanCodeV2など）
 8. [docs/07_app_ideas.md](docs/07_app_ideas.md) — 難易度別アプリ案リスト
 
+## コード変更と git の基本手順
+
+ファイルを編集して Vercel に反映させるまでの基本的な流れです。初めての場合は [docs/08_git_basics.md](docs/08_git_basics.md) を参照してください。
+
+**簡潔な流れ：**
+```bash
+# 1. ファイルを編集（VSCodeなどで）
+#    src/components/YourComponent.vue など
+
+# 2. 変更をステージに追加
+git add .
+
+# 3. コミットメッセージ付きで記録
+git commit -m "実装した内容をここに書く"
+
+# 4. リモートリポジトリにプッシュ
+git push
+
+# 5. Vercel が自動的にデプロイ（数秒～数十秒待つ）
+#    本番環境（LINE ミニアプリ）に反映されます
+```
+
 ## ディレクトリ構成
 
 ```
