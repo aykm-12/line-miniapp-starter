@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { initLiff, isLiffConfigured, liff } from './lib/liff'
+import { initLiff, isLiffConfigured, liff, redirectToLiffApp } from './lib/liff'
 import { isSupabaseConfigured } from './lib/supabase'
 import SampleList from './components/SampleList.vue'
 
-const status = ref('loading') // 'loading' | 'ready' | 'guest' | 'error'
+const status = ref('loading') // 'loading' | 'ready' | 'guest' | 'error' | 'redirecting'
 const errorMessage = ref('')
 const userName = ref('')
 const userId = ref('')
@@ -19,6 +19,12 @@ onMounted(async () => {
 
   try {
     await initLiff()
+
+    if (!liff.isInClient() && import.meta.env.PROD) {
+      status.value = 'redirecting'
+      redirectToLiffApp()
+      return
+    }
 
     if (!liff.isLoggedIn() && !liff.isInClient()) {
       liff.login()
@@ -46,6 +52,8 @@ onMounted(async () => {
     <h1 class="mb-6 text-2xl font-bold">LINEミニアプリ 雛形</h1>
 
     <div v-if="status === 'loading'" class="text-slate-500">読み込み中...</div>
+
+    <div v-else-if="status === 'redirecting'" class="text-slate-500">LINEアプリで開き直しています...</div>
 
     <div v-else-if="status === 'error'" class="rounded-lg bg-red-50 p-4 text-red-700">
       <p class="font-semibold">初期化エラー</p>

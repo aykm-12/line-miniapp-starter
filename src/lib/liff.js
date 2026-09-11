@@ -26,4 +26,8 @@ export function initLiff() {
   return initPromise
 }
 
+export function redirectToLiffApp() {
+  window.location.href = `https://liff.line.me/${LIFF_ID}`
+}
+
 export { liff }
