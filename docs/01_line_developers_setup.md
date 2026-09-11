@@ -26,7 +26,7 @@
 2. 「本番用」の項目で **LIFF ID**（`1234567890-AbCdEfGh` のような形式、LIFF URLの/以降）を確認してメモしておく
 3. 「エンドポイントURL」は、いったん仮のURLが入っている。Vercelへのデプロイ後にURLを更新する手順は[docs/03_vercel_deploy.md](03_vercel_deploy.md)を参照してください
 
-> LINEミニアプリのLIFFアプリは、プロフィール情報（`profile` スコープ）へのアクセスがあらかじめ組み込まれており、通常のLIFFアプリのようにScopeやサイズ、ボットリンク機能を個別に変更することはできません。
+> LINEミニアプリのLIFFアプリは、プロフィール情報（`profile` スコープ）へのアクセスがあらかじめ組み込まれており、通常のLIFFアプリのようにScopeやサイズ、ボットリンク機能を個別に変更することはできません。ただし `chat_message.write` スコープ（トークルームへのメッセージ送信）は例外的に個別有効化が可能です。詳しくは[docs/06](06_liff_advanced_features.md#通知機能sendmessages--sharetargetpickerを使うには)を参照してください。
 
 ### ⚠️ 本番用チャネルを開発から使う場合の注意点
 

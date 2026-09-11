@@ -10,13 +10,20 @@
 | --- | --- | --- | --- |
 | `liff.shareTargetPicker()` | 友だちやグループを選んでメッセージを送信 | LINE Developersコンソールで「シェアターゲットピッカー」を有効化 | サイズ制限なし。LINEミニアプリでも利用可能 |
 | `liff.scanCodeV2()` | QRコード/バーコードの読み取り | コンソールで「Scan QR」を有効化 | LIFFブラウザで使うにはサイズ`Full`が前提（このスターターの構成では問題なし） |
-| `liff.sendMessages()` | 現在のトークルームに直接メッセージを送信 | `chat_message.write`スコープが必要 | サイズ`Full`前提。**LINEミニアプリはScopeを個別変更できない仕様**（[docs/01](01_line_developers_setup.md)参照）のため、動作可否は事前に公式リファレンスで要確認 |
+| `liff.sendMessages()` | 現在のトークルームに直接メッセージを送信 | `chat_message.write`スコープが必要 | サイズ`Full`前提。コンソールのLIFFタブから `chat_message.write` スコープを有効化することで利用可能（[下記](#通知機能sendmessages--sharetargetpickerを使うには)参照） |
 | サービスメッセージAPI | LINEミニアプリからユーザーへプッシュ通知を送る仕組み | チャネルアクセストークン（サーバー側でのみ扱う） | フロントエンドから直接呼べない。Vercelのサーバーレス関数（Node.js）を1本追加する必要あり（上級者向け、[docs/07](07_app_ideas.md)の上級案を参照） |
 | `liff.getFriendship()` | LINE公式アカウントとの友だち関係を取得 | `profile`スコープ＋LINE公式アカウントとのリンクが必要 | 特別な設定なしで利用可能なことが多いが、公式アカウントとの連携設定は事前に必要 |
 | `liff.permanentLink.createUrlBy()` | 今のページの永続リンクを生成（`shareTargetPicker`と組み合わせやすい） | 不要 | エンドポイントURLで始まるリンクのみ対応 |
 | `liff.closeWindow()` | LIFFアプリを閉じる | 不要 | LINEアプリ内でのみ有効 |
 | `liff.openWindow()` | LINE内ブラウザまたは外部ブラウザでURLを開く | 不要 | - |
 | `liff.getOS()` / `liff.isInClient()` | 実行環境の判定 | 不要 | 既に`src/App.vue`で`isInClient()`を使用中。分岐処理の参考にする |
+
+### 通知機能（sendMessages + shareTargetPicker）を使うには
+
+トークルームへの送信と、他の人への共有を組み合わせた「通知機能」を実装する場合、LINE Developersコンソールの対象LIFFアプリの「LIFF」タブで以下を有効化しておく必要があります。
+
+- **`chat_message.write`スコープ**を有効化する（`liff.sendMessages()`用）
+- **シェアターゲットピッカー**をオンにする（`liff.shareTargetPicker()`で他の人に共有するため）
 
 ## 6-2. 実装の進め方
 
